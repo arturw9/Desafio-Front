@@ -39,7 +39,6 @@ get numeroTitulo(): number | null {
   salvar(form: NgForm) {
     if (form.invalid) {
       alert('Preencha todos os campos obrigatórios corretamente!');
-      console.log('Form inválido:', form);
       return;
     }
 
@@ -61,8 +60,6 @@ get numeroTitulo(): number | null {
         dataVencimento: new Date(p.dataVencimento).toISOString()
       }))
     };
-
-    console.log('Objeto a ser enviado:', tituloParaEnvio);
 
     this.http.post('http://localhost:5000/Titulo/Inserir', tituloParaEnvio)
       .subscribe({
