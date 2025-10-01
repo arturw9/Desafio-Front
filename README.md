@@ -1,59 +1,60 @@
-# TitulosApp
+Desafio 🚀
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
+Este projeto foi desenvolvido com as seguintes tecnologias:
 
-## Development server
+.NET 8.0 (backend/API)
 
-To start a local development server, run:
+Angular 20.3 (frontend)
 
-```bash
+SQL Server (banco de dados)
+
+Entity Framework (ORM)
+
+📌 Configuração do Projeto
+API
+
+A API está configurada para rodar em:
+
+http://localhost:5000
+
+
+Se estiver rodando em outra porta, lembre-se de alterar a URL no projeto Angular.
+
+Dependências
+
+Antes de rodar o projeto Angular, instale as dependências:
+
+npm install
+
+🧩 Arquitetura e Padrões
+
+Aplicação dos princípios S.O.L.I.D
+
+Boas práticas de Clean Code
+
+Separação de funcionalidades em camadas e pastas de componentes(Cujo simbolizam as telas), garantindo organização, manutenção e evolução do código
+
+🧪 Testes
+
+Os testes unitários estão implementados em arquivos .spec.ts junto de cada componente.
+Exemplo:
+
+src/app/components/lista-titulos/lista-titulos.spec.ts
+
+Executar o projeto
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
+Executar os testes
 ng test
-```
 
-## Running end-to-end tests
+📂 Estrutura de Telas
 
-For end-to-end (e2e) testing, run:
+As telas do sistema estão disponíveis na pasta:
 
-```bash
-ng e2e
-```
+/Images-Telas
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+📄 Documentação
 
-## Additional Resources
+O enunciado do desafio está disponível em:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+/Desafio.pdf
