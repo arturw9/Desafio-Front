@@ -1,0 +1,128 @@
+/* Container geral */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Área de ações (botão novo título) */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+/* Botão Novo Título */
+.btn-novo {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-novo:hover {
+  background-color: #0056b3;
+}
+
+/* Pesquisa */
+.search-container {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.search-container input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+.search-container input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0,123,255,0.5);
+  outline: none;
+}
+
+/* Cards */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.card-header h3 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.card-header .devedor {
+  font-size: 14px;
+  color: #007bff;
+  font-weight: bold;
+}
+
+/* Card Body */
+.card-body p {
+  margin: 5px 0;
+}
+
+/* Card Footer */
+.card-footer h4 {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+.card-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-footer li {
+  padding: 5px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.card-footer li:last-child {
+  border-bottom: none;
+}
+
+strong {
+  color: #333;
+}

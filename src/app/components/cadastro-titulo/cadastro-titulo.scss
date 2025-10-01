@@ -1,0 +1,113 @@
+/* Container principal */
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+h2, h3 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+  padding: 8px 10px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.parcela {
+  background: #fff;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  position: relative;
+}
+
+/* Botões principais */
+.botoes {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Botão Salvar */
+button[type="submit"] {
+  background-color: #28a745;
+  color: #fff;
+}
+
+button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+/* Botão Voltar */
+button[type="button"] {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+button[type="button"]:hover {
+  background-color: #5a6268;
+}
+
+/* Botão Adicionar Parcela */
+button.adicionar-parcela {
+  background-color: #007bff;
+  color: #fff;
+  margin-bottom: 10px;
+  width: 200px;
+  align-self: center;
+}
+
+button.adicionar-parcela:hover {
+  background-color: #0056b3;
+}
+
+/* Botão Remover Parcela */
+.remover{
+  margin-top: 20px;
+}
+button.remover-parcela {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #dc3545;
+  color: #fff;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+button.remover-parcela:hover {
+  background-color: #c82333;
+}

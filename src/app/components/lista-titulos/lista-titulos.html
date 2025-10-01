@@ -1,0 +1,44 @@
+<div class="container">
+
+    <div class="actions">
+    <button (click)="irParaCadastro()" class="btn-novo">Novo Título</button>
+  </div>
+
+  <!-- Campo de pesquisa -->
+  <div class="search-container">
+    <input
+      type="text"
+      placeholder="Pesquisar por nome do devedor"
+      [(ngModel)]="filtroNome"
+      (ngModelChange)="pesquisar()"
+    />
+  </div>
+
+  <!-- Container de cards -->
+  <div class="cards-container">
+    <div class="card" *ngFor="let titulo of titulos">
+      <div class="card-header">
+        <h3>Número do título {{ titulo.numeroTitulo }}</h3>
+        <span class="devedor">{{ titulo.nomeDevedor }}</span>
+      </div>
+
+      <div class="card-body">
+        <p><strong>Quantidade de parcelas:</strong> {{ titulo.parcelas.length }}</p>
+        <p><strong>Valor original:</strong> R$ {{ valorOriginal(titulo) | number:'1.2-2' }}</p>
+        <p><strong>Dias em atraso:</strong> {{ totalDiasAtraso(titulo) }} dias</p>
+        <p><strong>Valor atualizado na data de hoje:</strong> R$ {{ valorAtualizado(titulo) | number:'1.2-2' }}</p>
+      </div>
+
+      <div class="card-footer">
+        <h4>Detalhes das parcelas:</h4>
+        <ul>
+          <li *ngFor="let parcela of titulo.parcelas">
+            <strong>Parcela {{ parcela.numeroParcela }}:</strong>
+            {{ diasAtraso(parcela.dataVencimento) }} dias –
+            Valor Juros: R$ {{ valorJurosParcela(parcela.valorParcela, diasAtraso(parcela.dataVencimento), titulo.percentualJuros) | number:'1.2-2' }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
