@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { env } from '../../../env/env';
+import { Titulo } from '../../model/titulo';
 
 @Component({
   selector: 'app-cadastro-titulo',
@@ -14,27 +16,29 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 export class CadastroTitulo {
   private http = inject(HttpClient);
 
-  titulo = {
+  titulo: Titulo = {
     numeroTitulo: '',
     nomeDevedor: '',
     cpfDevedor: '',
-    percentualJuros: null as number | null,
-    percentualMulta: null as number | null,
+    percentualJuros: 0,
+    percentualMulta: 0,
     parcelas: [
-      { numeroParcela: 1, dataVencimento: '', valorParcela: null as number | null }
+      {
+        numeroParcela: 1,
+        dataVencimento: '',
+        valorParcela: 0
+      }
     ]
   };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
-  // Propriedade string para bind no input
-numeroTituloStr: string = '';
+  numeroTituloStr: string = '';
 
-// Getter para obter como número
-get numeroTitulo(): number | null {
-  const n = Number(this.numeroTituloStr);
-  return isNaN(n) ? null : n;
-}
+  get numeroTitulo(): number | null {
+    const n = Number(this.numeroTituloStr);
+    return isNaN(n) ? null : n;
+  }
 
   salvar(form: NgForm) {
     if (form.invalid) {
@@ -42,7 +46,11 @@ get numeroTitulo(): number | null {
       return;
     }
 
-    // Verifica datas das parcelas
+    if (this.titulo.percentualJuros <= 0 || this.titulo.percentualMulta <= 0) {
+      alert(`Percentual de juros e multa, devem ser maios que zero.`);
+      return;
+    }
+
     const hoje = new Date();
     for (let p of this.titulo.parcelas) {
       const dataVenc = new Date(p.dataVencimento);
@@ -52,7 +60,6 @@ get numeroTitulo(): number | null {
       }
     }
 
-    // Converter datas para ISO
     const tituloParaEnvio = {
       ...this.titulo,
       parcelas: this.titulo.parcelas.map(p => ({
@@ -61,7 +68,7 @@ get numeroTitulo(): number | null {
       }))
     };
 
-    this.http.post('http://localhost:5000/Titulo/Inserir', tituloParaEnvio)
+    this.http.post(`${env.apiUrl}/Titulo/Inserir`, tituloParaEnvio)
       .subscribe({
         next: () => {
           alert('Título cadastrado com sucesso!');
@@ -79,20 +86,19 @@ get numeroTitulo(): number | null {
   }
 
   adicionarParcela() {
-  this.titulo.parcelas.push({ numeroParcela: this.titulo.parcelas.length + 1, dataVencimento: '', valorParcela: null });
-}
-
-removerParcela(index: number) {
-  if (this.titulo.parcelas.length > 1) {
-    this.titulo.parcelas.splice(index, 1);
-  } else {
-    alert('Deve haver pelo menos uma parcela.');
+    this.titulo.parcelas.push({ numeroParcela: this.titulo.parcelas.length + 1, dataVencimento: '', valorParcela: 0 });
   }
-}
 
-onNumeroTituloInput(event: any) {
-  // Garante apenas dígitos
-  this.titulo.numeroTitulo = event.target.value.replace(/\D/g, '');
-}
+  removerParcela(index: number) {
+    if (this.titulo.parcelas.length > 1) {
+      this.titulo.parcelas.splice(index, 1);
+    } else {
+      alert('Deve haver pelo menos uma parcela.');
+    }
+  }
+
+  onNumeroTituloInput(event: any) {
+    this.titulo.numeroTitulo = event.target.value.replace(/\D/g, '');
+  }
 
 }

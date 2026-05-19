@@ -5,11 +5,12 @@
   padding: 20px;
   background: #f5f5f5;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
 }
 
-h2, h3 {
+h2,
+h3 {
   text-align: center;
   color: #333;
 }
@@ -95,9 +96,10 @@ button.adicionar-parcela:hover {
 }
 
 /* Botão Remover Parcela */
-.remover{
+.remover {
   margin-top: 20px;
 }
+
 button.remover-parcela {
   position: absolute;
   top: 10px;

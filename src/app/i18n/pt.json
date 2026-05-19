@@ -1,0 +1,18 @@
+{
+  "cadastroTitulo": {
+    "titulo": "Cadastrar Título",
+    "numeroTitulo": "Número do Título",
+    "nomeDevedor": "Nome do Devedor",
+    "cpfDevedor": "CPF do Devedor (11 dígitos)",
+    "juros": "Percentual de Juros (% ao mês)",
+    "multa": "Percentual de Multa (%)",
+    "parcelas": "Parcelas",
+    "adicionarParcela": "Adicionar outra parcela",
+    "numeroParcela": "Número da Parcela",
+    "dataVencimento": "Data de Vencimento (Menor que a data atual)",
+    "valorParcela": "Valor da Parcela",
+    "remover": "Remover",
+    "salvar": "Salvar",
+    "voltar": "Voltar"
+  }
+}

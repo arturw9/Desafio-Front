@@ -4,88 +4,39 @@
   <form #form="ngForm" (ngSubmit)="salvar(form)">
     <!-- Dados do título -->
     <label for="numeroTitulo">Número do Título</label>
-<input
-  id="numeroTitulo"
-  name="numeroTitulo"
-  [(ngModel)]="titulo.numeroTitulo"
-  required
-  inputmode="numeric"
-  pattern="[0-9]*"
-  maxlength="20"
-  (input)="onNumeroTituloInput($event)"
-/>
+    <input id="numeroTitulo" name="numeroTitulo" [(ngModel)]="titulo.numeroTitulo" required inputmode="numeric"
+      pattern="[0-9]*" maxlength="20" (input)="onNumeroTituloInput($event)" />
 
 
     <label>Nome do Devedor:</label>
-    <input
-      type="text"
-      [(ngModel)]="titulo.nomeDevedor"
-      name="nomeDevedor"
-      required
-    />
+    <input type="text" [(ngModel)]="titulo.nomeDevedor" name="nomeDevedor" required />
 
     <label>CPF do Devedor (11 dígitos):</label>
-    <input
-  type="text"
-  [(ngModel)]="titulo.cpfDevedor"
-  name="cpfDevedor"
-  required
-  pattern="[0-9]{11}"
-  title="Informe 11 números"
-/>
+    <input type="text" [(ngModel)]="titulo.cpfDevedor" name="cpfDevedor" required pattern="[0-9]{11}"
+      title="Informe 11 números" />
 
 
     <label>Percentual de Juros (% ao mês):</label>
-    <input
-      type="number"
-      [(ngModel)]="titulo.percentualJuros"
-      name="percentualJuros"
-      required
-      min="0"
-    />
+    <input type="number" [(ngModel)]="titulo.percentualJuros" name="percentualJuros" required min="0" />
 
     <label>Percentual de Multa (%):</label>
-    <input
-      type="number"
-      [(ngModel)]="titulo.percentualMulta"
-      name="percentualMulta"
-      required
-      min="0"
-    />
-<h3>Parcelas</h3>
+    <input type="number" [(ngModel)]="titulo.percentualMulta" name="percentualMulta" required min="0" />
+    <h3>Parcelas</h3>
 
     <!-- Botão para adicionar parcela -->
     <button type="button" (click)="adicionarParcela()">Adicionar outra parcela</button>
 
     <div *ngFor="let p of titulo.parcelas; let i = index" class="parcela">
       <label>Número da Parcela:</label>
-      <input
-        type="number"
-        [(ngModel)]="p.numeroParcela"
-        name="numeroParcela{{i}}"
-        required
-        min="1"
-      />
+      <input type="number" [(ngModel)]="p.numeroParcela" name="numeroParcela{{i}}" required min="1" />
 
       <label>Data de Vencimento *(Menor do que a data atual)*:</label>
-      <input
-        type="date"
-        [(ngModel)]="p.dataVencimento"
-        name="dataVencimento{{i}}"
-        required
-      />
+      <input type="date" [(ngModel)]="p.dataVencimento" name="dataVencimento{{i}}" required />
 
       <label>Valor da Parcela:</label>
-      <input
-        type="number"
-        [(ngModel)]="p.valorParcela"
-        name="valorParcela{{i}}"
-        required
-        min="0.01"
-        step="0.01"
-      />
+      <input type="number" [(ngModel)]="p.valorParcela" name="valorParcela{{i}}" required min="0.01" step="0.01" />
 
-              <button type="button" class="remover" (click)="removerParcela(i)">Remover</button>
+      <button type="button" class="remover" (click)="removerParcela(i)">Remover</button>
 
     </div>
 

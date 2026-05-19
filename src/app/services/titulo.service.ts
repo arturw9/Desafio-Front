@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { env } from '../../env/env';
 
 export interface Parcela {
   numeroParcela: number;
@@ -21,7 +22,7 @@ export interface Titulo {
   providedIn: 'root'
 })
 export class TituloService {
-  private apiUrl = 'http://localhost:5000/Titulo/Listar';
+  private apiUrl = `${env.apiUrl}/Titulo/Listar`;
 
   constructor(private http: HttpClient) { }
 

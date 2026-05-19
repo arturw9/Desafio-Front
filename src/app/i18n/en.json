@@ -1,0 +1,18 @@
+{
+  "cadastroTitulo": {
+    "titulo": "Register Title",
+    "numeroTitulo": "Title Number",
+    "nomeDevedor": "Debtor Name",
+    "cpfDevedor": "Debtor ID (11 digits)",
+    "juros": "Interest Rate (% per month)",
+    "multa": "Penalty (%)",
+    "parcelas": "Installments",
+    "adicionarParcela": "Add installment",
+    "numeroParcela": "Installment Number",
+    "dataVencimento": "Due Date (must be before today)",
+    "valorParcela": "Installment Value",
+    "remover": "Remove",
+    "salvar": "Save",
+    "voltar": "Back"
+  }
+}

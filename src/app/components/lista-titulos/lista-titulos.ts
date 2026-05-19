@@ -4,6 +4,7 @@ import { TituloService, Titulo } from '../../services/titulo.service';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
+import { env } from '../../../env/env';
 
 @Component({
   selector: 'app-lista-titulos',
@@ -13,24 +14,23 @@ import { Router, RouterModule } from '@angular/router';
   styleUrls: ['./lista-titulos.scss']
 })
 export class ListaTitulos implements OnInit {
-    private http = inject(HttpClient);
+  private http = inject(HttpClient);
   titulos: Titulo[] = [];
   filtroNome: string = '';
 
-  hoje = new Date('2020-09-21');
+  hoje = new Date();
 
-  constructor(private tituloService: TituloService, private router: Router) {}
+  constructor(private tituloService: TituloService, private router: Router) { }
 
   ngOnInit() {
-    this.pesquisar(); // carrega todos inicialmente
+    this.pesquisar();
   }
 
   irParaCadastro() {
     this.router.navigate(['/cadastro-titulo']);
   }
-
   pesquisar() {
-    let url = 'http://localhost:5000/Titulo/Listar';
+    let url = `${env.apiUrl}/Titulo/Listar`;
     if (this.filtroNome && this.filtroNome.trim() !== '') {
       url += `?nomeDevedor=${this.filtroNome}`;
     }
@@ -49,7 +49,7 @@ export class ListaTitulos implements OnInit {
     const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
 
     return dias > 0 ? dias : 0;
-}
+  }
 
   valorMulta(valor: number, percentual: number): number {
     return (valor * percentual) / 100;
@@ -64,8 +64,8 @@ export class ListaTitulos implements OnInit {
   }
 
   totalDiasAtraso(titulo: Titulo): number {
-  return Math.max(...titulo.parcelas.map(p => this.diasAtraso(p.dataVencimento)));
-} // Total de dias em atraso esta pegando somente o maior, conforme o desafio
+    return Math.max(...titulo.parcelas.map(p => this.diasAtraso(p.dataVencimento)));
+  }
 
   valorAtualizado(titulo: Titulo): number {
     const valorOriginal = this.valorOriginal(titulo);

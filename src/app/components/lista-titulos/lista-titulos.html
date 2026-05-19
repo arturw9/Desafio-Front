@@ -1,44 +1,87 @@
-<div class="container">
+<div class="page">
 
-    <div class="actions">
-    <button (click)="irParaCadastro()" class="btn-novo">Novo Título</button>
+  <div class="page-header">
+    <div>
+      <h1>Lista de Títulos</h1>
+      <p>Gerencie e acompanhe os títulos cadastrados</p>
+    </div>
+
+    <button (click)="irParaCadastro()" class="btn-primary">
+      + Novo Título
+    </button>
   </div>
 
-  <!-- Campo de pesquisa -->
-  <div class="search-container">
-    <input
-      type="text"
-      placeholder="Pesquisar por nome do devedor"
-      [(ngModel)]="filtroNome"
-      (ngModelChange)="pesquisar()"
-    />
+  <div class="search-box">
+    <input type="text" placeholder="Buscar por nome do devedor..." [(ngModel)]="filtroNome"
+      (ngModelChange)="pesquisar()" />
   </div>
 
-  <!-- Container de cards -->
-  <div class="cards-container">
+  <div class="cards">
+
     <div class="card" *ngFor="let titulo of titulos">
-      <div class="card-header">
-        <h3>Número do título {{ titulo.numeroTitulo }}</h3>
-        <span class="devedor">{{ titulo.nomeDevedor }}</span>
+
+      <div class="card-top">
+        <div>
+          <span class="label">Título</span>
+          <h3>#{{ titulo.numeroTitulo }}</h3>
+        </div>
+
+        <span class="badge" [ngClass]="{
+            'badge-danger': totalDiasAtraso(titulo) > 30,
+            'badge-warning': totalDiasAtraso(titulo) > 0 && totalDiasAtraso(titulo) <= 30,
+            'badge-success': totalDiasAtraso(titulo) === 0
+          }">
+          {{ totalDiasAtraso(titulo) === 0 ? 'Em dia' : totalDiasAtraso(titulo) + ' dias atraso' }}
+        </span>
       </div>
 
-      <div class="card-body">
-        <p><strong>Quantidade de parcelas:</strong> {{ titulo.parcelas.length }}</p>
-        <p><strong>Valor original:</strong> R$ {{ valorOriginal(titulo) | number:'1.2-2' }}</p>
-        <p><strong>Dias em atraso:</strong> {{ totalDiasAtraso(titulo) }} dias</p>
-        <p><strong>Valor atualizado na data de hoje:</strong> R$ {{ valorAtualizado(titulo) | number:'1.2-2' }}</p>
+      <div class="devedor">
+        {{ titulo.nomeDevedor }}
       </div>
 
-      <div class="card-footer">
-        <h4>Detalhes das parcelas:</h4>
-        <ul>
-          <li *ngFor="let parcela of titulo.parcelas">
-            <strong>Parcela {{ parcela.numeroParcela }}:</strong>
-            {{ diasAtraso(parcela.dataVencimento) }} dias –
-            Valor Juros: R$ {{ valorJurosParcela(parcela.valorParcela, diasAtraso(parcela.dataVencimento), titulo.percentualJuros) | number:'1.2-2' }}
-          </li>
-        </ul>
+      <div class="info">
+
+        <div class="info-item">
+          <span>Parcelas</span>
+          <strong>{{ titulo.parcelas.length }}</strong>
+        </div>
+
+        <div class="info-item">
+          <span>Valor Original</span>
+          <strong>R$ {{ valorOriginal(titulo) | number:'1.2-2' }}</strong>
+        </div>
+
+        <div class="info-item destaque">
+          <span>Valor Atualizado</span>
+          <strong>
+            R$ {{ valorAtualizado(titulo) | number:'1.2-2' }}
+          </strong>
+        </div>
+
       </div>
+
+      <div class="parcelas">
+        <h4>Parcelas</h4>
+
+        <div class="parcela" *ngFor="let parcela of titulo.parcelas">
+
+          <span>
+            Parcela {{ parcela.numeroParcela }}
+          </span>
+
+          <span>
+            {{ diasAtraso(parcela.dataVencimento) }} dias
+          </span>
+
+          <span>
+            Juros: R$
+            {{ valorJurosParcela(parcela.valorParcela, diasAtraso(parcela.dataVencimento), titulo.percentualJuros) |
+            number:'1.2-2' }}
+          </span>
+
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
