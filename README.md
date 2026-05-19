@@ -18,7 +18,7 @@ A API está configurada para rodar em:
 http://localhost:5000
 
 
-Se estiver rodando em outra porta, lembre-se de alterar a URL no projeto Angular.
+Se estiver rodando em outra porta, lembre-se de alterar a URL no projeto Angular dentro do arquivo env.ts.
 
 Dependências
 
@@ -32,20 +32,10 @@ Aplicação dos princípios S.O.L.I.D
 
 Boas práticas de Clean Code
 
-Separação de funcionalidades em camadas e pastas de componentes(Cujo simbolizam as telas), garantindo organização, manutenção e evolução do código
-
-🧪 Testes
-
-Os testes unitários estão implementados em arquivos .spec.ts junto de cada componente.
-Exemplo:
-
-src/app/components/lista-titulos/lista-titulos.spec.ts
+Separação de funcionalidades em camadas, models, arquivos reutilizaveis e pastas de componentes(Cujo simbolizam as telas), garantindo organização, manutenção e evolução do código
 
 Executar o projeto
-ng serve
-
-Executar os testes
-ng test
+ng start
 
 📂 Estrutura de Telas
 
